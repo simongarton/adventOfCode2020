@@ -16,6 +16,7 @@ public class Day1 {
     private static String FILENAME = "data/day1.txt";
 
     public long runPart1() {
+        System.out.println("Day 1 - Report Repair\n");
         List<Long> longList = getLongs();
         long start = System.currentTimeMillis();
         Result result1 = part1AsList(longList);
