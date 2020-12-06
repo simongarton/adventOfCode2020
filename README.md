@@ -2,6 +2,9 @@
 
 [Advent of Code](https://adventofcode.com/) : a yearly programming competition.
 
+## Day 6 
+Set manipulation. Disappointingly easy.
+
 ## Day 5 
 You're given a string of chars that identifies a specific seat on a
 plan using binary space partitioning; decode each string e.g.
