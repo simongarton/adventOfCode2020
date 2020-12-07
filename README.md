@@ -2,6 +2,9 @@
 
 [Advent of Code](https://adventofcode.com/) : a yearly programming competition.
 
+## Day 7 
+Recursive objects, bags holding bags. Nice.
+
 ## Day 6 
 Set manipulation. Disappointingly easy.
 
