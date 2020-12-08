@@ -2,6 +2,10 @@
 
 [Advent of Code](https://adventofcode.com/) : a yearly programming competition.
 
+## Day 8 
+Build a little 3 instruction processor, debug a program to find the infinite loop
+and then figure out which instruction is wrong to allow it to terminate. Nice.
+
 ## Day 7 
 Recursive objects, bags holding bags. Nice.
 

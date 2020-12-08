@@ -12,7 +12,6 @@ import java.util.stream.Collectors;
 public class Day7 {
 
     private static String FILENAME = "data/day7.txt";
-    private static boolean DEBUG = false;
 
     private List<Rule> rules = new ArrayList<>();
 
