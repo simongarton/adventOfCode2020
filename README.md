@@ -2,6 +2,10 @@
 
 [Advent of Code](https://adventofcode.com/) : a yearly programming competition.
 
+## Day 9
+Given a stream of numbers, find the first one that isn't the sum of a pair within the previous 25;
+then the sum of some other numbers determined by that value. Straightforward.
+
 ## Day 8 
 Build a little 3 instruction processor, debug a program to find the infinite loop
 and then figure out which instruction is wrong to allow it to terminate. Nice.
