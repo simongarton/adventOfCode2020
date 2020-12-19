@@ -11,9 +11,9 @@ import java.util.stream.Collectors;
 @Data
 public class Day10 {
 
-    private static String FILENAME = "data/day10-test.txt";
+    private static String FILENAME = "data/day10-test-large.txt";
     private List<Adapter> adapters;
-    private int combinations = 0;
+    private long combinations = 0;
 
     public void run() {
         System.out.println("Day 10: Adapter Array\n");
@@ -31,51 +31,75 @@ public class Day10 {
         }
         differences.put(deviceAdapter, differences.get(deviceAdapter) + 1);
         for (Map.Entry<Integer, Integer> entry : differences.entrySet()) {
-            System.out.println("difference " + entry.getKey() + " = count " + entry.getValue());
+            //System.out.println("difference " + entry.getKey() + " = count " + entry.getValue());
         }
         int maxRating = adapters.get(adapters.size() - 1).getRating();
         List<Adapter> usedAdapters = new ArrayList<>();
-        //solveIteratively(adapters, maxRating, 0);
         combinations = 0;
-        System.out.println(solveRecursively(usedAdapters, maxRating, 0));
+        System.out.println("Recursive " + solveRecursively(adapters, usedAdapters, maxRating, 0));
+        System.out.println("Chunks " + solveInChunks());
     }
 
-    private void solveIteratively(int maxRating, int rating) {
-        Stack<Adapter> stack = new Stack<>();
-        stack.push(adapters.get(0));
-        while (stack.size() > 0) {
-            Adapter a = stack.pop();
-            for (Adapter availableAdapter : adapters) {
-                if (availableAdapter.canAccept(a.rating)) {
-                    stack.push(availableAdapter);
+    private long solveInChunks() {
+        List<List<Adapter>> lists = new ArrayList<>();
+        List<Adapter> workingList = new ArrayList<>();
+        Adapter previous = null;
+        System.out.println("Starting with  " + adapters.stream().map(a -> Integer.toString(a.getRating())).collect(Collectors.joining(",")));
+        for (Adapter a : adapters) {
+            if (workingList.isEmpty()) {
+                workingList.add(a);
+            } else {
+                if (a.getRating() - previous.getRating() == 3) {
+                    List<Adapter> subList = new ArrayList<>(workingList);
+                    lists.add(subList);
+                    workingList.clear();
+                }
+                workingList.add(a);
+            }
+            previous = a;
+        }
+        List<Adapter> subList = new ArrayList<>(workingList);
+        lists.add(subList);
+        long workingCombinations = 0;
+        for (List<Adapter> list : lists) {
+            combinations = 0;
+            List<Adapter> usedAdapters = new ArrayList<>();
+            int minRating = list.get(0).getRating();
+            int maxRating = list.get(list.size() - 1).getRating();
+            long thisCombinations = solveRecursively(list, usedAdapters, maxRating, minRating);
+            System.out.println("Trying " + list.stream().map(a -> Integer.toString(a.getRating())).collect(Collectors.joining(",")) + " got " + thisCombinations);
+            if (workingCombinations == 0) {
+                workingCombinations = thisCombinations;
+            } else {
+                if (thisCombinations != 0) {
+                    workingCombinations = workingCombinations * thisCombinations;
                 }
             }
-            testForFinish(a, stack, maxRating);
         }
+        return workingCombinations;
     }
 
-    private void testForFinish(Adapter adapter, Stack<Adapter> stack, int maxRating) {
-        System.out.println("from " + adapter.getRating() + " : " + stack.stream().map(a -> Integer.toString(a.getRating())).collect(Collectors.joining(",")));
-    }
-
-    private int solveRecursively(List<Adapter> usedAdapters, int maxRating, int rating) {
-        for (Adapter availableAdapter : adapters) {
-            int oldRating = rating;
+    private long solveRecursively(List<Adapter> availableAdapters, List<Adapter> usedAdapters, int maxRating, final int rating) {
+        List<Adapter> possibleAdapters = availableAdapters.stream().filter(a -> a.canAccept(rating)).collect(Collectors.toList());
+        int workingRating = rating;
+        for (Adapter availableAdapter : possibleAdapters) {
+            int oldRating = workingRating;
             if (usedAdapters.contains(availableAdapter)) {
                 continue;
             }
-            if (!availableAdapter.canAccept(rating)) {
+            if (!availableAdapter.canAccept(workingRating)) {
                 continue;
             }
             usedAdapters.add(availableAdapter);
-            rating = availableAdapter.getRating();
+            workingRating = availableAdapter.getRating();
             if (testForFinish(usedAdapters, maxRating)) {
                 combinations++;
+            } else {
+                //System.out.println("(0)," + usedAdapters.stream().map(a -> Integer.toString(a.getRating())).collect(Collectors.joining(",")) + " ...");
             }
-            System.out.println("(0)," + usedAdapters.stream().map(a -> Integer.toString(a.getRating())).collect(Collectors.joining(",")) + " ...");
-            solveRecursively(usedAdapters, maxRating, rating);
+            solveRecursively(availableAdapters, usedAdapters, maxRating, workingRating);
             usedAdapters.remove(availableAdapter);
-            rating = oldRating;
+            workingRating = oldRating;
         }
         return combinations;
     }
@@ -101,7 +125,7 @@ public class Day10 {
                 difference.put(diff, 0);
             }
             difference.put(diff, difference.get(diff) + 1);
-            System.out.println("Added " + adapter.getRating() + " at " + currentRating);
+            //System.out.println("Added " + adapter.getRating() + " at " + currentRating);
             currentRating = adapter.rating;
         }
         return difference;
