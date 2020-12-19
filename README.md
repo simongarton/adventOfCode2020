@@ -4,6 +4,14 @@
 
 ## Day 10
 
+## Day 19
+Give a list of adapters, that can connect to certain other adapters, how many 
+ways can I get through the adapters to the end. A really challenging one in that
+a simple recursive solution worked fine for the small dataset, but the
+big dataset had 97 adapters, which gave over 3 trillion solutions and 
+recursion died. So I borrowed a Dynamic Programming / Memoisation idea from the
+subreddit and it worked fine. The subreddit had many solutions, some of which
+make no sense.
 
 ## Day 9
 Given a stream of numbers, find the first one that isn't the sum of a pair within the previous 25;
