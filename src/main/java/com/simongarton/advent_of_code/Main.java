@@ -15,7 +15,13 @@ public class Main {
         //day7();
         //day8();
         //day9();
-        day10();
+        //day10();
+        day11();
+    }
+
+    private static void day11() {
+        Day11 day11 = new Day11();
+        day11.run();
     }
 
     private static void day10() {

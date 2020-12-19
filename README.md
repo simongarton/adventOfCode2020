@@ -2,9 +2,12 @@
 
 [Advent of Code](https://adventofcode.com/) : a yearly programming competition.
 
-## Day 10
+## Day 11
+A nice little cellular automata. Seats on the ferry fill up or empty depending on 
+(part 1) who is sitting next to you or (part 2) who you can see. Wrote a 
+couple of versions of Life recently so nice and quick.
 
-## Day 19
+## Day 10
 Give a list of adapters, that can connect to certain other adapters, how many 
 ways can I get through the adapters to the end. A really challenging one in that
 a simple recursive solution worked fine for the small dataset, but the
