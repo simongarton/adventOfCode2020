@@ -19,7 +19,7 @@ public class Day12 {
     private static String FILENAME = "data/day12.txt";
 
     @Getter
-    public static enum Direction {
+    public enum Direction {
 
         NORTH(0),
         EAST(90),
@@ -88,7 +88,7 @@ public class Day12 {
 
         private void followDirection(String line) {
             String instruction = line.substring(0, 1);
-            int number = Integer.parseInt(line.substring(1, line.length()));
+            int number = Integer.parseInt(line.substring(1));
             switch (instruction) {
                 case "N":
                     north = north + number;
@@ -131,7 +131,7 @@ public class Day12 {
 
         private void followWaypointDirection(String line) {
             String instruction = line.substring(0, 1);
-            int number = Integer.parseInt(line.substring(1, line.length()));
+            int number = Integer.parseInt(line.substring(1));
             switch (instruction) {
                 case "N":
                     waypointNorth = waypointNorth + number;
@@ -154,40 +154,10 @@ public class Day12 {
                     waypointEast = east + deltaEast;
                     break;
                 case "L":
-                    switch (number) {
-                        case 0:
-                            rotateWaypoint(0);
-                            break;
-                        case 90:
-                            rotateWaypoint(270);
-                            break;
-                        case 180:
-                            rotateWaypoint(180);
-                            break;
-                        case 270:
-                            rotateWaypoint(90);
-                            break;
-                        default:
-                            throw new RuntimeException("Unhandled angle " + number);
-                    }
+                    rotateWaypoint(360 - number);
                     break;
                 case "R":
-                    switch (number) {
-                        case 0:
-                            rotateWaypoint(0);
-                            break;
-                        case 90:
-                            rotateWaypoint(90);
-                            break;
-                        case 180:
-                            rotateWaypoint(180);
-                            break;
-                        case 270:
-                            rotateWaypoint(270);
-                            break;
-                        default:
-                            throw new RuntimeException("Unhandled angle " + number);
-                    }
+                    rotateWaypoint(number);
                     break;
                 default:
                     throw new RuntimeException("unrecognised instruction " + instruction);
