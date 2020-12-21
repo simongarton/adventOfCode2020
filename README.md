@@ -2,6 +2,9 @@
 
 [Advent of Code](https://adventofcode.com/) : a yearly programming competition.
 
+## Day 14 Docking Data
+Build a binary processor that works with values and applies masks.
+
 ## Day 13 Shuttle Search
 Periods and cycles. Part 1 straight forward, part 2 needs a clever solution. The
 subreddit suggested Chinese Remainder Theorem, but my maths isn't up to it. However,
