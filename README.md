@@ -2,7 +2,14 @@
 
 [Advent of Code](https://adventofcode.com/) : a yearly programming competition.
 
+## Day 13 Shuttle Search
+Periods and cycles. Part 1 straight forward, part 2 needs a clever solution. The
+subreddit suggested Chinese Remainder Theorem, but my maths isn't up to it. However,
+other examples suggested periodicity, and I translated an algorithm which then made sense.
+
 ## Day 12 Rain Risk
+Straightforward example of moving a ship around following directions, first
+absolutely, and then in relation to a waypoint that also moves.
 
 ## Day 11 Seating System
 A nice little cellular automata. Seats on the ferry fill up or empty depending on 
