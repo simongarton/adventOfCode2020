@@ -1,5 +1,6 @@
 package com.simongarton.advent_of_code.days;
 
+import com.simongarton.advent_of_code.days.day4.Passport;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;

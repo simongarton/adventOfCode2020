@@ -1,4 +1,4 @@
-package com.simongarton.advent_of_code.days;
+package com.simongarton.advent_of_code.days.day4;
 
 import lombok.Data;
 

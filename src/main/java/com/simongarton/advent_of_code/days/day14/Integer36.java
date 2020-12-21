@@ -1,4 +1,4 @@
-package com.simongarton.advent_of_code.days;
+package com.simongarton.advent_of_code.days.day14;
 
 import lombok.Getter;
 
@@ -36,5 +36,9 @@ public class Integer36 {
             }
         }
         return bits.toString();
+    }
+
+    public int getIntValue() {
+        return (int) value;
     }
 }

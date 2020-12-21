@@ -1,5 +1,6 @@
 package com.simongarton.advent_of_code.days;
 
+import com.simongarton.advent_of_code.days.day14.Integer36;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
